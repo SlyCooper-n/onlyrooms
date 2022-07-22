@@ -6,9 +6,17 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="Best Next.js template with bash scripts in the world" />
+        <meta
+          name="description"
+          content="Best Next.js template with bash scripts in the world"
+        />
 
-        <link href="/favicon.ico" rel="shortcut icon" type="image/ico" sizes="16x16" />
+        <link
+          href="/favicon.ico"
+          rel="shortcut icon"
+          type="image/ico"
+          sizes="16x16"
+        />
 
         <meta name="theme-color" content="#6419e6" />
 
@@ -18,20 +26,20 @@ export default function Document() {
           src="https://polyfill.io/v3/polyfill.min.js"
         />
 
-        {/* 
+        {/*
           <meta name="application-name" content="Next.js template with bash scripts" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-status-bar" content="#6419e6" />
           <meta name="apple-mobile-web-app-title" content="Next.js template with bash scripts" />
-          
+
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="msapplication-config" content="/icons/browserconfig.xml" />
           <meta name="msapplication-TileColor" content="#6419e6" />
           <meta name="msapplication-tap-highlight" content="no" />
 
-          // icons 
+          // icons
           <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
           <link rel="manifest" href="/manifest.json" />
