@@ -3,7 +3,6 @@ import { Button, Logo } from "@components/widgets";
 import { useAuth } from "@core/hooks";
 import { NextPage } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import {
   AppleLogo,
   FacebookLogo,
@@ -13,7 +12,6 @@ import {
 
 const Login: NextPage = () => {
   const { user, signInWithGoogle } = useAuth();
-  const router = useRouter();
 
   return (
     <PageContainer headTitle="OnlyRooms | Login" center>
@@ -27,6 +25,7 @@ const Login: NextPage = () => {
             <h2 className="my-8 text-2xl font-semibold uppercase">
               You are all set
             </h2>
+
             <p className="text-lg">
               Go to{" "}
               <Link href="/">
