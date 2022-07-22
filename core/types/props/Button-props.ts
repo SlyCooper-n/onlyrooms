@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  ring?: string;
+  ring?: boolean;
   children: ReactNode | ReactNode[];
 }
