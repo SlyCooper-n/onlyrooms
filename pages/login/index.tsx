@@ -20,27 +20,24 @@ const Login: NextPage = () => {
       </h1>
 
       <main className="text-center">
-        {!user && (
+        {user && (
           <>
             <h2 className="my-8 text-2xl font-semibold uppercase">
               You are all set
             </h2>
 
-            <p className="text-lg">
-              Go to{" "}
-              <Link href="/">
-                <a className="link">Home</a>
-              </Link>
-            </p>
+            <Link href="/">
+              <a className="link text-lg">Go to Home</a>
+            </Link>
           </>
         )}
 
-        {user && (
+        {!user && (
           <div className="flex flex-col gap-4">
             <Button
               onClick={signInWithGoogle}
-              ring="#ea4435"
-              className="bg-[#ea4435] text-white border-none hover:bg-[#ea4435] hover:brightness-90"
+              ring
+              className="bg-[#ea4435] text-white border-none hover:bg-[#ea4435] hover:brightness-90 focus:ring-[#ea4435]"
             >
               <GoogleLogo size={32} weight="bold" />
               Login with Google
