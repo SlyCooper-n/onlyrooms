@@ -23,6 +23,4 @@ describe("Login page", () => {
 
     expect(screen.getByText(/only/i)).toBeInTheDocument();
   });
-
-  it("");
 });
