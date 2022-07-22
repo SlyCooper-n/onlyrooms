@@ -2,6 +2,7 @@ import { auth, FirebaseSignInService } from "@core/services";
 import { AuthProviderProps, UserType } from "@core/types";
 import { SignInUseCase } from "@core/use-cases";
 import { GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -14,6 +15,7 @@ export const AuthContext = createContext<AuthContext>({} as AuthContext);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserType | undefined>();
+  const route = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -50,6 +52,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     setUser(user);
     toast.success(`Sign in complete. Welcome, ${user.name}!`);
+
+    route.push("/");
   }
 
   return (
