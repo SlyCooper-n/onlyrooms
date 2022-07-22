@@ -8,6 +8,10 @@ module.exports = {
         primary: ["Roboto"],
         secondary: ["Poppins"],
       },
+      container: {
+        center: true,
+        padding: "1rem",
+      },
     },
   },
   plugins: [
