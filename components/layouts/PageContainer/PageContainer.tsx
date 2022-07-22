@@ -1,3 +1,4 @@
+import { useTheme } from "@core/hooks";
 import { PageContainerProps } from "@core/types";
 import Head from "next/head";
 
@@ -7,6 +8,8 @@ export const PageContainer = ({
   center,
   children,
 }: PageContainerProps) => {
+  const { appTheme } = useTheme();
+
   return (
     <>
       <Head>
@@ -15,7 +18,7 @@ export const PageContainer = ({
       </Head>
 
       <div
-        data-theme="dark"
+        data-theme={appTheme}
         className={`w-screen min-h-screen flex flex-col ${
           center && "justify-center items-center"
         }`}
