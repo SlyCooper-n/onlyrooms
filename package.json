@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test:ui": "vitest --ui --config ./vitest.config.ts",
     "test": "vitest run --config ./vitest.config.ts",
-    "test:watch": "vitest --config ./vitest.config.ts"
+    "test:watch": "vitest --config ./vitest.config.ts",
+    "cy": "npx cypress open",
+    "cy:headless": "npx cypress run --headless"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.0.0",
@@ -41,6 +43,7 @@
     "@vitest/ui": "^0.18.1",
     "autoprefixer": "^10.4.7",
     "c8": "^7.12.0",
+    "cypress": "^10.3.1",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
     "eslint-plugin-jest-dom": "^4.0.2",
