@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:ui": "vitest --ui --config ./vitest.config.ts",
     "test": "vitest run --config ./vitest.config.ts",
     "test:watch": "vitest --config ./vitest.config.ts",
+    "test:ui": "vitest --ui --config ./vitest.config.ts",
     "cy": "npx cypress open",
     "cy:headless": "npx cypress run --headless"
   },
