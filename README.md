@@ -18,7 +18,7 @@
 <br />
 
 > Project made together with Rockeseat to practise Next.js and Firebase. <br>
-> This is a template for a new project based on Next.js and created with [bash scripts](https://github.com/SlyCooper-n/models).
+> This is a template for a new project based on Next.js created with [bash scripts](https://github.com/SlyCooper-n/models).
 
 | Status                                                                                                                                     | Project                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
