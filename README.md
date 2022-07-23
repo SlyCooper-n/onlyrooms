@@ -1,9 +1,9 @@
 <div align="center">
 
-# OnlyRooms IMG
+<!-- # OnlyRooms IMG
 
 <br />
-<br />
+<br /> -->
 
 # OnlyRooms | Rooms for everybody
 
