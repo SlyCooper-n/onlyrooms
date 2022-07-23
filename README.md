@@ -54,6 +54,7 @@ Styling
 
 - [Tailwind](https://tailwindcss.com/)
 - [DaisyUI](https://daisyui.com/)
+- [RadixUI](https://www.radix-ui.com/)
 
 </details>
 
