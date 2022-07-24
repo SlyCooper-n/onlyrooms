@@ -14,6 +14,12 @@ vi.mock("@core/hooks", () => {
         signInWithGoogle: vi.fn(),
       };
     }),
+
+    useTheme: vi.fn(() => {
+      return {
+        appTheme: "dark",
+      };
+    }),
   };
 });
 
