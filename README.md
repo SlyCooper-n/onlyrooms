@@ -1,9 +1,9 @@
 <div align="center">
 
-# OnlyRooms IMG
+<!-- # OnlyRooms IMG
 
 <br />
-<br />
+<br /> -->
 
 # OnlyRooms | Rooms for everybody
 
@@ -18,7 +18,7 @@
 <br />
 
 > Project made together with Rockeseat to practise Next.js and Firebase. <br>
-> This is a template for a new project based on Next.js and created with [bash scripts](https://github.com/SlyCooper-n/models).
+> This is a template for a new project based on Next.js created with [bash scripts](https://github.com/SlyCooper-n/models).
 
 | Status                                                                                                                                     | Project                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
@@ -54,6 +54,7 @@ Styling
 
 - [Tailwind](https://tailwindcss.com/)
 - [DaisyUI](https://daisyui.com/)
+- [RadixUI](https://www.radix-ui.com/)
 
 </details>
 
@@ -121,7 +122,7 @@ Clone the repo as shown above :arrow_up: and follow [this little guide](https://
 
 ## :desktop_computer: Deploy
 
-On Vercel: <https://onlyrooms.vercel.app/>
+On Vercel: not deployed yet
 
 ## :memo: License
 
