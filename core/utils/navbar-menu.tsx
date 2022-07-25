@@ -1,3 +1,5 @@
+import { UserCircle, Wrench } from "phosphor-react";
+
 export const navbarMenu = [
   {
     id: 1,
@@ -21,10 +23,12 @@ export const userOptions = [
     id: 1,
     name: "Profile",
     link: "/account/profile",
+    icon: <UserCircle size={32} className="text-base-content" />,
   },
   {
     id: 2,
     name: "Settings",
     link: "/account/settings",
+    icon: <Wrench size={32} className="text-base-content" />,
   },
 ];

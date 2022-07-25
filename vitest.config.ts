@@ -9,7 +9,6 @@ export default defineConfig({
     setupFiles: ["./core/tests/setup.ts"],
     coverage: {
       enabled: true,
-      include: ["./components/**/*.tsx"],
     },
   },
 });

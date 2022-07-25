@@ -6,8 +6,9 @@ import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-interface AuthContext {
+export interface AuthContext {
   user: UserType | undefined;
+  loading: boolean;
   signInWithGoogle: () => Promise<void>;
 }
 
@@ -15,12 +16,14 @@ export const AuthContext = createContext<AuthContext>({} as AuthContext);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserType | undefined>();
+  const [loading, setLoading] = useState(true);
   const route = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
         setUser(undefined);
+        setLoading(false);
         return;
       }
 
@@ -31,6 +34,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         name: displayName,
         avatar: photoURL,
       });
+      setLoading(false);
     });
 
     return () => {
@@ -57,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, loading, signInWithGoogle }}>
       {children}
     </AuthContext.Provider>
   );

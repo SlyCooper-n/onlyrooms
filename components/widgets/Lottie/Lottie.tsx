@@ -1,6 +1,13 @@
-import { LottieProps } from "@core/types/";
-import { useLottie } from "lottie-react";
+import { LottieOptions, LottieRefCurrentProps, useLottie } from "lottie-react";
 import { useState } from "react";
+
+interface LottieProps extends LottieOptions {
+  speed?: number;
+  segments?: [number, number];
+  backwards?: boolean;
+  actionOnClick?: "revert" | "play-pause" | "stop" | "none";
+  customOnClick?: (lottieFunctions: LottieRefCurrentProps) => void;
+}
 
 export const Lottie = ({
   animationData,
