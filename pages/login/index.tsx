@@ -27,9 +27,11 @@ const Login: NextPage = () => {
           </h1>
 
           <div className="text-center">
-            {loading ? (
+            {loading && (
               <CircleNotch size={32} className="mx-auto animate-spin" />
-            ) : !user ? (
+            )}
+
+            {!user ? (
               <SignInList providers={{ signInWithGoogle }} />
             ) : (
               <LoginComplete />
