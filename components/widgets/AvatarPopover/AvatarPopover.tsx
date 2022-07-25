@@ -1,12 +1,8 @@
-import { UserType } from "@core/types";
+import { AvatarPopoverProps } from "@core/types";
 import { userOptions } from "@core/utils";
 import { Popover } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface AvatarPopoverProps {
-  user: UserType;
-}
 
 export const AvatarPopover = ({ user }: AvatarPopoverProps) => {
   return (
