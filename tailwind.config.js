@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ["Roboto"],
-        secondary: ["Poppins"],
+        text: ["Roboto"],
+        title: ["Poppins"],
       },
       container: {
         center: true,
