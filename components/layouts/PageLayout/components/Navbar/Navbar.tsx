@@ -2,12 +2,14 @@ import { AvatarPopover, Logo } from "@components/widgets";
 import { useAuth } from "@core/hooks";
 import { navbarMenu, userOptions } from "@core/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { CircleNotch, List } from "phosphor-react";
 import { useState } from "react";
 
 export const Navbar = () => {
   const { user, loading } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
+  const route = useRouter();
 
   return (
     <nav className="container navbar justify-between z-10">
@@ -32,7 +34,11 @@ export const Navbar = () => {
             className={`${
               opt.isButton &&
               "btn btn-sm btn-primary first-letter:capitalize normal-case"
-            } text-lg font-semibold hover:brightness-110`}
+            } text-lg font-semibold hover:brightness-110 ${
+              opt.name === "Create a new room" &&
+              route.pathname === "/rooms/new" &&
+              "hidden"
+            }`}
           >
             <Link href={opt.link}>
               <a>{opt.name}</a>
