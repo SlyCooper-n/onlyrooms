@@ -5,13 +5,9 @@ import { IllustrationProps, SignInListProps } from "@core/types";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AppleLogo,
-  CircleNotch,
-  FacebookLogo,
-  GithubLogo,
-  GoogleLogo,
-} from "phosphor-react";
+import { AppleLogo, CircleNotch, GithubLogo, GoogleLogo } from "phosphor-react";
+
+// TODO: Add sign in with Apple and Github
 
 const Login: NextPage = () => {
   const { user, loading, signInWithGoogle } = useAuth();
@@ -90,14 +86,6 @@ const SignInList = ({ providers }: SignInListProps) => {
       <Button disabled>
         <AppleLogo size={32} />
         Login with Apple
-      </Button>
-
-      <Button
-        disabled
-        className="bg-blue-500 text-white border-none hover:bg-blue-500 hover:brightness-90"
-      >
-        <FacebookLogo size={32} />
-        Login with Facebook
       </Button>
     </div>
   );
