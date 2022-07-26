@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <PageContainer headTitle="OnlyRooms | Home">
-      <PageLayout navbar>
+      <PageLayout navbar footer>
         <div className="absolute top-0 w-screen h-screen brightness-[0.13]" />
 
         <style>{`
