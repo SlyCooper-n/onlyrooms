@@ -2,6 +2,7 @@ import { PageContainer, PageLayout } from "@components/layouts";
 import { Select } from "@components/widgets";
 import { useAuth } from "@core/hooks";
 import { db } from "@core/services";
+import { FirebaseError } from "firebase/app";
 import { push, ref } from "firebase/database";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -16,6 +17,7 @@ const NewRoom: NextPage = () => {
   const [roomType, setRoomType] = useState<RoomType>("default");
   const inputRef = useRef<HTMLInputElement | null>(null);
   const route = useRouter();
+  const selectLabelRef = useRef<HTMLLabelElement>(null);
 
   async function handleCreateNewRoom(e: FormEvent) {
     e.preventDefault();
@@ -36,7 +38,7 @@ const NewRoom: NextPage = () => {
     switch (roomType) {
       case "default":
         try {
-          const roomRef = ref(db, "live-questions");
+          const roomRef = ref(db, "rooms/live-room");
 
           const room = await push(roomRef, {
             title: roomTitle,
@@ -44,9 +46,10 @@ const NewRoom: NextPage = () => {
           });
 
           toast.success("Room created");
-          route.push(`/rooms/live-questions/${room.key}`);
+          route.push(`/rooms/live-room/${room.key}`);
         } catch (error) {
-          console.log(error);
+          const err = error as FirebaseError;
+          toast.error(err.message);
         }
         break;
 
@@ -79,11 +82,20 @@ const NewRoom: NextPage = () => {
               className="input bg-white outline-none focus:ring-2 focus:ring-secondary-focus focus:ring-offset-2 focus:ring-offset-base-100"
             />
 
-            <Select
-              selected={roomType}
-              selectValues={["default", "annonymous"]}
-              changeValue={(value: RoomType) => setRoomType(value)}
-            />
+            <label
+              ref={selectLabelRef}
+              className="mb-12 w-full flex justify-between items-center"
+            >
+              <span className="mr-auto">Room type:</span>
+              <Select
+                selectedValue={roomType}
+                changeValue={(value: RoomType) => setRoomType(value)}
+                options={[
+                  { value: "default", text: "Default" },
+                  { value: "annonymous", text: "Annonymous" },
+                ]}
+              />
+            </label>
 
             <button type="submit" className="btn btn-primary">
               Create
