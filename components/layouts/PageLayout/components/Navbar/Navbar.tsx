@@ -9,7 +9,7 @@ import { useState } from "react";
 export const Navbar = () => {
   const { user, loading } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
-  const route = useRouter();
+  const router = useRouter();
 
   return (
     <nav className="container navbar justify-between z-10">
@@ -36,7 +36,7 @@ export const Navbar = () => {
               "btn btn-sm btn-primary first-letter:capitalize normal-case"
             } text-lg font-semibold hover:brightness-110 ${
               opt.name === "Create a new room" &&
-              route.pathname === "/rooms/new" &&
+              router.pathname === "/rooms/new" &&
               "hidden"
             }`}
           >
