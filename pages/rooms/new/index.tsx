@@ -38,7 +38,7 @@ const NewRoom: NextPage = () => {
     switch (roomType) {
       case "default":
         try {
-          const roomRef = ref(db, "rooms/live-room");
+          const roomRef = ref(db, "rooms/live-rooms");
 
           const room = await push(roomRef, {
             title: roomTitle,
@@ -46,7 +46,7 @@ const NewRoom: NextPage = () => {
           });
 
           toast.success("Room created");
-          route.push(`/rooms/live-room/${room.key}`);
+          route.push(`/rooms/live-rooms/${room.key}`);
         } catch (error) {
           const err = error as FirebaseError;
           toast.error(err.message);
