@@ -1,63 +1,50 @@
+import { SelectProps } from "@core/types";
 import * as RadixSelect from "@radix-ui/react-select";
-import { RoomType } from "pages/rooms/new";
-import { CaretDown, Check } from "phosphor-react";
+import { Check } from "phosphor-react";
 import { useRef } from "react";
 
-interface SelectProps {
-  selected: RoomType;
-  selectValues: RoomType[];
-  changeValue: (value: RoomType) => void;
-}
-
 export const Select = ({
-  selected,
-  selectValues,
+  selectedValue,
   changeValue,
+  options,
 }: SelectProps) => {
-  const selectTriggerButtonRef = useRef(null);
+  const selectRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <RadixSelect.Root
-      value={selected}
-      onValueChange={(item) => changeValue(item as RoomType)}
-    >
-      <label className="mb-12 flex items-center gap-2">
-        Room type:
-        <RadixSelect.Trigger asChild>
-          <button
-            ref={selectTriggerButtonRef}
-            className="input w-48 flex justify-between items-center gap-2 bg-base-300"
-          >
-            <RadixSelect.Value>{selected}</RadixSelect.Value>
-            <RadixSelect.Icon asChild>
-              <CaretDown />
-            </RadixSelect.Icon>
-          </button>
-        </RadixSelect.Trigger>
-      </label>
+    <RadixSelect.Root value={selectedValue} onValueChange={changeValue}>
+      <RadixSelect.Trigger
+        ref={selectRef}
+        className="input min-w-[12rem] flex justify-between items-center gap-2 bg-base-300"
+      >
+        <RadixSelect.Value>{selectedValue}</RadixSelect.Value>
 
-      <RadixSelect.Portal container={selectTriggerButtonRef.current}>
-        <RadixSelect.Content className="w-48 mt-32 -ml-4 p-2 bg-base-300 rounded-md">
-          {selectValues.map((item) => (
+        <RadixSelect.Icon />
+      </RadixSelect.Trigger>
+
+      <div className="flex justify-end items-start">
+        <RadixSelect.Content className="mt-8 min-w-[12rem] p-2 bg-base-300 rounded-lg">
+          {options.map((option) => (
             <RadixSelect.Item
-              key={item}
-              value={item}
-              disabled={item === "annonymous"}
-              className={`pl-10 text-start outline-none hover:bg-primary hover:text-primary-content hover:cursor-pointer rounded-md transition-colors ${
-                item === "annonymous"
-                  ? "opacity-50 hover:bg-transparent hover:text-base-content hover:cursor-auto pointer-events-none"
+              key={option.value}
+              value={option.value}
+              disabled={option.value === "annonymous"}
+              className={`relative pl-10 text-start hover:bg-primary hover:text-primary-content transition-colors ${
+                option.value === "annonymous"
+                  ? "opacity-50 pointer-events-none"
                   : ""
               }`}
             >
-              <RadixSelect.ItemIndicator asChild>
-                <Check size={20} className="absolute left-0" />
+              <RadixSelect.ItemIndicator className="absolute left-2">
+                <Check size={20} />
               </RadixSelect.ItemIndicator>
 
-              <RadixSelect.ItemText>{item}</RadixSelect.ItemText>
+              <RadixSelect.ItemText className="first-letter:capitalize">
+                {option.text}
+              </RadixSelect.ItemText>
             </RadixSelect.Item>
           ))}
         </RadixSelect.Content>
-      </RadixSelect.Portal>
+      </div>
     </RadixSelect.Root>
   );
 };
