@@ -16,6 +16,12 @@ vi.mock("lottie-react", () => {
   };
 });
 
+vi.mock("next/router", () => {
+  return {
+    useRouter: () => ({ pathname: "/" }),
+  };
+});
+
 const MockedNavbar = ({ noUser }: { noUser?: boolean }) => {
   const fakeUser = {
     id: "id",
@@ -29,6 +35,7 @@ const MockedNavbar = ({ noUser }: { noUser?: boolean }) => {
         user: noUser ? undefined : fakeUser,
         loading: false,
         signInWithGoogle: vi.fn(),
+        signOut: vi.fn(),
       }}
     >
       <Navbar />
@@ -44,7 +51,9 @@ describe("Navbar", () => {
   it("should show Login button if user is not logged in", () => {
     render(<MockedNavbar noUser />);
 
-    expect(screen.getAllByRole("link", { name: "Login" })[0]).toBeInTheDocument();
+    expect(
+      screen.getAllByRole("link", { name: "Login" })[0]
+    ).toBeInTheDocument();
   });
 
   it("should show AvatarPopover if user is logged in", () => {
