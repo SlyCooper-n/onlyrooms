@@ -22,7 +22,7 @@ const Login: NextPage = () => {
             <Logo />
           </h1>
 
-          <div className="max-w-[250px] mx-auto">
+          <div className="max-w-[250px] mx-auto text-center">
             {loading && (
               <CircleNotch size={32} className="mx-auto animate-spin" />
             )}
