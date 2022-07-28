@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,4 +23,8 @@ const app = initializeApp({
 const auth = getAuth(app);
 const db = getDatabase(app);
 
-export { app, auth, db };
+// refs
+const liveRoomsRef = ref(db, "rooms/live-rooms");
+const annonymousRoomsRef = ref(db, "rooms/annonymous-rooms");
+
+export { app, auth, db, liveRoomsRef, annonymousRoomsRef };
