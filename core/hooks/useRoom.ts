@@ -1,34 +1,8 @@
 import { db } from "@core/services";
+import { FirebaseSnapshotRoom, QuestionType } from "@core/types";
 import { off, onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useAuth } from "./useAuth";
-
-type QuestionType = {
-  createdBy: string;
-  likes: Record<
-    string,
-    {
-      authorId: string;
-    }
-  >[];
-};
-
-type FirebaseSnapshot = {
-  createdBy: string;
-  title: string;
-  questions?: Record<
-    string,
-    {
-      authotId: string;
-      likes: Record<
-        string,
-        {
-          authorId: string;
-        }
-      >[];
-    }
-  >;
-};
 
 export const useRoom = (roomID: string) => {
   const { user } = useAuth();
@@ -42,13 +16,36 @@ export const useRoom = (roomID: string) => {
 
     try {
       onValue(roomRef, (snapshot) => {
-        const roomData = snapshot.val() as FirebaseSnapshot;
+        const roomData = snapshot.val() as FirebaseSnapshotRoom;
         const questions = roomData.questions || [];
 
-        console.log(questions);
+        const parsedQuestions: QuestionType[] = Object.entries(questions).map(
+          ([key, value]) => {
+            const { likes, ...rest } = value;
+
+            if (!likes) {
+              return {
+                ...rest,
+                id: key,
+                likesCount: 0,
+                likeId: undefined,
+              };
+            }
+
+            return {
+              ...rest,
+              id: key,
+              likesCount: Object.values(likes).length,
+              likeId: Object.values(likes).find(
+                (likeId) => likeId.authorId === user?.id
+              )?.authorId,
+            };
+          }
+        );
 
         setRoomTitle(roomData.title);
         setCreatedBy(roomData.createdBy);
+        setQuestions(parsedQuestions);
       });
     } catch (error) {
       console.log(error);
