@@ -1,13 +1,14 @@
 import { AvatarPopover, Logo } from "@components/widgets";
-import { useAuth } from "@core/hooks";
+import { useAuth, useTheme } from "@core/hooks";
 import { navbarMenu, userOptions } from "@core/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { CircleNotch, List } from "phosphor-react";
+import { CircleNotch, List, X } from "phosphor-react";
 import { useState } from "react";
 
 export const Navbar = () => {
   const { user, loading } = useAuth();
+  const { appTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
   const router = useRouter();
 
@@ -16,7 +17,7 @@ export const Navbar = () => {
       <Link href="/">
         <a className="btn btn-ghost mr-auto px-2">
           <h1 className="text-xl sm:text-3xl font-bold">
-            <Logo />
+            {router.pathname === "/" ? <Logo theme="light" /> : <Logo />}
           </h1>
         </a>
       </Link>
@@ -31,13 +32,17 @@ export const Navbar = () => {
         {navbarMenu.map((opt) => (
           <li
             key={opt.id}
-            className={`${
+            className={`text-lg font-semibold hover:brightness-110 ${
               opt.isButton &&
               "btn btn-sm btn-primary first-letter:capitalize normal-case"
-            } text-lg font-semibold hover:brightness-110 ${
+            } ${
               opt.name === "Create a new room" &&
               router.pathname === "/rooms/new" &&
               "hidden"
+            } ${
+              router.pathname === "/" && appTheme === "light"
+                ? "sm:text-white"
+                : ""
             }`}
           >
             <Link href={opt.link}>
@@ -88,7 +93,19 @@ export const Navbar = () => {
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         className="btn btn-ghost px-2 sm:hidden z-10"
       >
-        <List size={24} />
+        {isMobileMenuOpen ? (
+          <List
+            size={24}
+            className={`${
+              appTheme === "dark" || router.pathname === "/" ? "text-white" : ""
+            }`}
+          />
+        ) : (
+          <X
+            size={24}
+            className={`${appTheme === "dark" ? "text-white" : ""}`}
+          />
+        )}
       </button>
     </nav>
   );

@@ -24,7 +24,7 @@ const Home: NextPage = () => {
                 Chat and Q&amp;A rooms <br /> for everybody
               </h2>
 
-              <h3>
+              <h3 className="text-white brightness-50">
                 Made just for fun! Enjoy a unique platform built for you, <br />{" "}
                 with love by a single student
               </h3>
