@@ -3,12 +3,31 @@ import { off, onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useAuth } from "./useAuth";
 
-type QuestionType = {};
+type QuestionType = {
+  createdBy: string;
+  likes: Record<
+    string,
+    {
+      authorId: string;
+    }
+  >[];
+};
 
-type RoomType = {
+type FirebaseSnapshot = {
   createdBy: string;
   title: string;
-  questions?: QuestionType[];
+  questions?: Record<
+    string,
+    {
+      authotId: string;
+      likes: Record<
+        string,
+        {
+          authorId: string;
+        }
+      >[];
+    }
+  >;
 };
 
 export const useRoom = (roomID: string) => {
@@ -23,8 +42,10 @@ export const useRoom = (roomID: string) => {
 
     try {
       onValue(roomRef, (snapshot) => {
-        const roomData = snapshot.val() as RoomType;
+        const roomData = snapshot.val() as FirebaseSnapshot;
         const questions = roomData.questions || [];
+
+        console.log(questions);
 
         setRoomTitle(roomData.title);
         setCreatedBy(roomData.createdBy);
