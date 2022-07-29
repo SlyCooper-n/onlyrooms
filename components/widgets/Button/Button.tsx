@@ -11,7 +11,7 @@ export const Button = ({
     <button
       {...props}
       type={type}
-      className={`btn gap-2 font-primary ${className} ${
+      className={`btn gap-2 font-primary outline-none ${className} ${
         ring && `focus:ring-2 focus:ring-offset-4 focus:ring-offset-base-100`
       }`}
     >
