@@ -24,16 +24,24 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 
 // refs
-const liveRoomsRef = ref(db, "rooms/live-rooms");
-const liveRoomsQuestionsRef = (roomID: string) =>
-  ref(db, `/rooms/live-rooms/${roomID}/questions`);
+const liveRoomsRef = (
+  roomID: string | null,
+  type: "room" | "question" | "like"
+) => {
+  if (roomID && type === "room") {
+    return ref(db, `rooms/live-rooms/${roomID}`);
+  }
+
+  if (roomID && type === "question") {
+    return ref(db, `rooms/live-rooms/${roomID}/questions`);
+  }
+
+  // if (roomID && type === "like") {
+  //   return ref(db, `rooms/live-rooms/${roomID}/questions/${questionID}/likes`);
+  // }
+
+  return ref(db, `rooms/live-rooms`);
+};
 const annonymousRoomsRef = ref(db, "rooms/annonymous-rooms");
 
-export {
-  app,
-  auth,
-  db,
-  liveRoomsRef,
-  liveRoomsQuestionsRef,
-  annonymousRoomsRef,
-};
+export { app, auth, db, liveRoomsRef, annonymousRoomsRef };
