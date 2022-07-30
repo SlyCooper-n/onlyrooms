@@ -25,6 +25,15 @@ const db = getDatabase(app);
 
 // refs
 const liveRoomsRef = ref(db, "rooms/live-rooms");
+const liveRoomsQuestionsRef = (roomID: string) =>
+  ref(db, `/rooms/live-rooms/${roomID}/questions`);
 const annonymousRoomsRef = ref(db, "rooms/annonymous-rooms");
 
-export { app, auth, db, liveRoomsRef, annonymousRoomsRef };
+export {
+  app,
+  auth,
+  db,
+  liveRoomsRef,
+  liveRoomsQuestionsRef,
+  annonymousRoomsRef,
+};
