@@ -2,7 +2,7 @@ import { PageContainer } from "@components/layouts";
 import { RoomHeader } from "@components/modules";
 import { Button, Question, UserInfo } from "@components/widgets";
 import { useAuth, useRoom } from "@core/hooks";
-import { liveRoomsQuestionsRef } from "@core/services";
+import { liveRoomsRef } from "@core/services";
 import { FirebaseError } from "firebase/app";
 import { push } from "firebase/database";
 import { NextPage } from "next";
@@ -24,7 +24,7 @@ const LiveRoom: NextPage = () => {
     if (userAsk.trim() === "" || !user) return;
 
     try {
-      await push(liveRoomsQuestionsRef(live_roomID as string), {
+      await push(liveRoomsRef(live_roomID as string, "question"), {
         authorId: user.id,
         content: userAsk,
       });
