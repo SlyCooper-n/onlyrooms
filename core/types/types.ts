@@ -33,7 +33,7 @@ export type QuestionType = {
   isAnswered: boolean;
   isHighlighted: boolean;
   likesCount: number;
-  likeId: string | undefined;
+  likeId: string | null;
 };
 
 // options for Select component
