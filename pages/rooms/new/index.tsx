@@ -1,9 +1,9 @@
 import { PageContainer, PageLayout } from "@components/layouts";
 import { Select } from "@components/widgets";
 import { useAuth } from "@core/hooks";
-import { db } from "@core/services";
+import { liveRoomsRef } from "@core/services";
 import { FirebaseError } from "firebase/app";
-import { push, ref } from "firebase/database";
+import { push } from "firebase/database";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { FormEvent, useRef, useState } from "react";
@@ -38,9 +38,7 @@ const NewRoom: NextPage = () => {
     switch (roomType) {
       case "default":
         try {
-          const roomRef = ref(db, "rooms/live-rooms");
-
-          const room = await push(roomRef, {
+          const room = await push(liveRoomsRef(null, "room"), {
             title: roomTitle,
             createdBy: user?.id,
           });
