@@ -3,6 +3,8 @@ import { RoomHeaderProps } from "@core/types";
 import Link from "next/link";
 import { ShareNetwork } from "phosphor-react";
 
+// TODO: Add share functionality
+
 export const RoomHeader = ({ roomID }: RoomHeaderProps) => {
   return (
     <header className="py-2 sm:py-4 flex bg-base-200">
