@@ -28,7 +28,7 @@ export const useRoom = (roomID: string) => {
                 ...rest,
                 id: key,
                 likesCount: 0,
-                likeId: undefined,
+                likeId: null,
               };
             }
 
@@ -36,9 +36,10 @@ export const useRoom = (roomID: string) => {
               ...rest,
               id: key,
               likesCount: Object.values(likes).length,
-              likeId: Object.values(likes).find(
-                (likeId) => likeId.authorId === user?.id
-              )?.authorId,
+              likeId:
+                Object.values(likes).find(
+                  (likeId) => likeId.authorId === user?.id
+                )?.authorId ?? null,
             };
           }
         );
