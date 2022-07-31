@@ -1,7 +1,6 @@
 import { AdminGuard } from "@components/guards";
 import { PageContainer } from "@components/layouts";
-import { RoomHeader, RoomInfo } from "@components/modules";
-import { Question } from "@components/widgets";
+import { RoomHeader, RoomInfo, RoomQuestions } from "@components/modules";
 import { useRoom } from "@core/hooks";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -25,11 +24,7 @@ const AdminLiveQuestions: NextPage = () => {
           <main className="flex-1 container lg:w-2/3 py-12">
             <RoomInfo title={roomTitle} questionsLength={questions.length} />
 
-            <section>
-              {questions.map((question) => (
-                <Question key={question.id} data={question} variant="admin" />
-              ))}
-            </section>
+            <RoomQuestions questions={questions} variant="admin" />
           </main>
         )}
       </PageContainer>
