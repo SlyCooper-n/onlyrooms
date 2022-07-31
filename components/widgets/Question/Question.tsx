@@ -1,4 +1,5 @@
 import * as likeButton from "@/lottie/like-button.json";
+import { AlertDialog } from "@components/modules";
 import { useAuth } from "@core/hooks";
 import { db } from "@core/services";
 import { QuestionType } from "@core/types";
@@ -152,14 +153,21 @@ export const Question = ({ data, variant = "user" }: QuestionProps) => {
                   </Tooltip>
                 )}
 
-                <Tooltip tooltipContent="Delete question">
-                  <button type="button" onClick={handleDelete}>
+                <AlertDialog
+                  title="Are you sure?"
+                  description="This action is irreversible, take it as the last resort."
+                  cancelButtonText="Not really"
+                  confirmButtonText="Yes, I want to delete it"
+                  confirmButtonColor="error"
+                  onConfirm={handleDelete}
+                >
+                  <button type="button">
                     <Trash
                       size={24}
                       className="w-4 sm:w-6 hover:text-error transition-colors"
                     />
                   </button>
-                </Tooltip>
+                </AlertDialog>
               </div>
             )
           )}
