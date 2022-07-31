@@ -8,16 +8,18 @@ interface TooltipProps {
 
 export const Tooltip = ({ tooltipContent, children }: TooltipProps) => {
   return (
-    <RadixTooltip.Root>
-      <RadixTooltip.Trigger>{children}</RadixTooltip.Trigger>
+    <RadixTooltip.Provider>
+      <RadixTooltip.Root>
+        <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
 
-      <RadixTooltip.Portal>
-        <RadixTooltip.Content>
-          <RadixTooltip.Arrow />
+        <RadixTooltip.Portal>
+          <RadixTooltip.Content className="p-2 bg-neutral rounded-md">
+            <RadixTooltip.Arrow />
 
-          {tooltipContent}
-        </RadixTooltip.Content>
-      </RadixTooltip.Portal>
-    </RadixTooltip.Root>
+            {tooltipContent}
+          </RadixTooltip.Content>
+        </RadixTooltip.Portal>
+      </RadixTooltip.Root>
+    </RadixTooltip.Provider>
   );
 };
