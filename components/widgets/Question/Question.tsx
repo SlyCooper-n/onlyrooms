@@ -9,6 +9,7 @@ import { Chat, Check, Trash } from "phosphor-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Lottie } from "../Lottie";
+import { Tooltip } from "../Tooltip";
 import { UserInfo } from "../UserInfo";
 
 interface QuestionProps {
@@ -130,29 +131,35 @@ export const Question = ({ data, variant = "user" }: QuestionProps) => {
             variant === "admin" && (
               <div className="flex gap-2">
                 {!isHighlighted && !isAnswered && (
-                  <button type="button" onClick={handleHighlight}>
-                    <Chat
-                      size={24}
-                      className="w-4 sm:w-6 hover:text-secondary transition-colors"
-                    />
-                  </button>
+                  <Tooltip tooltipContent="Hightlight question">
+                    <button type="button" onClick={handleHighlight}>
+                      <Chat
+                        size={24}
+                        className="w-4 sm:w-6 hover:text-secondary transition-colors"
+                      />
+                    </button>
+                  </Tooltip>
                 )}
 
                 {!isAnswered && (
-                  <button type="button" onClick={handleAnswer}>
-                    <Check
-                      size={24}
-                      className="w-4 sm:w-6 hover:text-success transition-colors"
-                    />
-                  </button>
+                  <Tooltip tooltipContent="Mark as answered">
+                    <button type="button" onClick={handleAnswer}>
+                      <Check
+                        size={24}
+                        className="w-4 sm:w-6 hover:text-success transition-colors"
+                      />
+                    </button>
+                  </Tooltip>
                 )}
 
-                <button type="button" onClick={handleDelete}>
-                  <Trash
-                    size={24}
-                    className="w-4 sm:w-6 hover:text-error transition-colors"
-                  />
-                </button>
+                <Tooltip tooltipContent="Delete question">
+                  <button type="button" onClick={handleDelete}>
+                    <Trash
+                      size={24}
+                      className="w-4 sm:w-6 hover:text-error transition-colors"
+                    />
+                  </button>
+                </Tooltip>
               </div>
             )
           )}
