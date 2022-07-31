@@ -1,4 +1,5 @@
 import { LottieOptions, LottieRefCurrentProps, useLottie } from "lottie-react";
+import { useEffect } from "react";
 
 interface LottieProps extends LottieOptions {
   clicked?: boolean;
@@ -65,9 +66,7 @@ export const Lottie = ({
           );
         }
 
-        if (toggleClicked) {
-          toggleClicked();
-        }
+        if (toggleClicked) return toggleClicked();
       }
     },
     onKeyDown: () => {},
@@ -75,6 +74,20 @@ export const Lottie = ({
   });
 
   lottie.setSpeed(speed);
+
+  const duration = lottie.getDuration(true) as number;
+  const [segmentStart, segmentEnd] = segments || [0, duration];
+
+  useEffect(() => {
+    if (clicked) {
+      lottie.goToAndStop(backwards ? segmentStart : segmentEnd, true);
+    }
+
+    if (!clicked) {
+      lottie.goToAndStop(backwards ? segmentEnd : segmentStart, true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return lottie.View;
 };
