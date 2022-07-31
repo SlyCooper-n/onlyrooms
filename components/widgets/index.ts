@@ -5,4 +5,5 @@ export * from "./Lottie";
 export * from "./Question";
 export * from "./RoomCode";
 export * from "./Select";
+export * from "./Tooltip";
 export * from "./UserInfo";
