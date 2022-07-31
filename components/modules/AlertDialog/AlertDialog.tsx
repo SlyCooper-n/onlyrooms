@@ -43,7 +43,7 @@ export const AlertDialog = ({
               </RadixAlertDialog.Cancel>
 
               <RadixAlertDialog.Action
-                className={`btn btn-error ${confirmButtonColor}`}
+                className={`btn btn-${confirmButtonColor}`}
                 onClick={onConfirm}
               >
                 {confirmButtonText}
