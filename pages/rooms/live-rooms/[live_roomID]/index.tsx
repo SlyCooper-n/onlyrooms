@@ -1,6 +1,6 @@
 import { PageContainer } from "@components/layouts";
-import { RoomHeader } from "@components/modules";
-import { Button, Question, UserInfo } from "@components/widgets";
+import { RoomHeader, RoomInfo, RoomQuestions } from "@components/modules";
+import { Button, UserInfo } from "@components/widgets";
 import { useAuth, useRoom } from "@core/hooks";
 import { liveRoomsRef } from "@core/services";
 import { FirebaseError } from "firebase/app";
@@ -14,8 +14,11 @@ import toast from "react-hot-toast";
 
 const LiveRoom: NextPage = () => {
   const { user, loading } = useAuth();
-  const { live_roomID } = useRouter().query;
-  const { roomTitle, questions, isLoading } = useRoom(live_roomID as string);
+  const router = useRouter();
+  const { live_roomID } = router.query;
+  const { roomTitle, questions, isLoading, createdBy } = useRoom(
+    live_roomID as string
+  );
   const [userAsk, setUserAsk] = useState("");
 
   async function handleSendAsk(e: FormEvent) {
@@ -37,6 +40,10 @@ const LiveRoom: NextPage = () => {
     }
   }
 
+  // if (user?.id === createdBy) {
+  //   router.push(`/rooms/admin/live-rooms/${live_roomID}`);
+  // }
+
   return (
     <PageContainer headTitle={`OnlyRooms | ${roomTitle}`}>
       <RoomHeader roomID={live_roomID as string} />
@@ -47,18 +54,7 @@ const LiveRoom: NextPage = () => {
         </div>
       ) : (
         <main className="flex-1 container lg:w-2/3 py-12">
-          <div className="flex flex-col justify-center items-center gap-4 sm:flex-row sm:justify-start">
-            <h2 className="text-2xl sm:text-3xl text-center font-title">
-              Room {roomTitle}
-            </h2>
-
-            {questions.length > 0 && (
-              <span className="badge sm:badge-lg badge-secondary">
-                {questions.length}{" "}
-                {questions.length === 1 ? "question" : "questions"}
-              </span>
-            )}
-          </div>
+          <RoomInfo title={roomTitle} questionsLength={questions.length} />
 
           <form className="my-8" onSubmit={handleSendAsk}>
             <textarea
@@ -92,11 +88,7 @@ const LiveRoom: NextPage = () => {
             </div>
           </form>
 
-          <section>
-            {questions.map((question) => (
-              <Question key={question.id} data={question} />
-            ))}
-          </section>
+          <RoomQuestions questions={questions} />
         </main>
       )}
     </PageContainer>
