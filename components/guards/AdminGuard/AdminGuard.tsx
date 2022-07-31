@@ -1,27 +1,25 @@
-import { useAuth, useRoom } from "@core/hooks";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 
 interface AdminGuardProps {
+  userId: string | undefined;
+  roomCreatorId: string;
   roomID: string;
   children: ReactNode | ReactNode[];
 }
 
-export const AdminGuard = ({ roomID, children }: AdminGuardProps) => {
-  const { user, loading } = useAuth();
-  const { createdBy } = useRoom(roomID);
+export const AdminGuard = ({
+  userId,
+  roomCreatorId,
+  roomID,
+  children,
+}: AdminGuardProps) => {
   const router = useRouter();
 
-  while (loading) {
-    return null;
-  }
-
-  const isAdmin = createdBy === user?.id;
-
-  if (!isAdmin) {
-    router.push("/");
-    return null;
-  }
+  // if (roomCreatorId !== userId) {
+  //   router.push(`/rooms/live-rooms/${roomID}`);
+  //   return null;
+  // }
 
   return <>{children}</>;
 };

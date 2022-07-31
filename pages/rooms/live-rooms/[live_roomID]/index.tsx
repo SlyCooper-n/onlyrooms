@@ -40,10 +40,6 @@ const LiveRoom: NextPage = () => {
     }
   }
 
-  // if (user?.id === createdBy) {
-  //   router.push(`/rooms/admin/live-rooms/${live_roomID}`);
-  // }
-
   return (
     <PageContainer headTitle={`OnlyRooms | ${roomTitle}`}>
       <RoomHeader roomID={live_roomID as string} />
