@@ -30,6 +30,11 @@ export interface RoomHeaderProps {
   roomID: string;
 }
 
+export interface RoomInfoProps {
+  title: string;
+  questionsLength: number;
+}
+
 // * widget components props
 export interface AvatarPopoverProps {
   user: UserType;
