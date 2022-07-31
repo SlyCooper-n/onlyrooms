@@ -2,19 +2,22 @@ import { UserCircle, Wrench } from "phosphor-react";
 
 export const navbarMenu = [
   {
-    id: 1,
-    name: "Live questions",
-    link: "/rooms/live-questions",
-  },
-  {
-    id: 2,
-    name: "Anonymous questions",
-    link: "/rooms/anonymous-questions",
-  },
-  {
     id: 3,
     name: "Chat",
     link: "/chat",
+    isButton: false,
+  },
+  {
+    id: 1,
+    name: "Dashboard",
+    link: "/rooms",
+    isButton: false,
+  },
+  {
+    id: 2,
+    name: "Create a new room",
+    link: "/rooms/new",
+    isButton: true,
   },
 ];
 
@@ -22,13 +25,13 @@ export const userOptions = [
   {
     id: 1,
     name: "Profile",
-    link: "/account/profile",
-    icon: <UserCircle size={32} className="text-base-content" />,
+    link: "/account",
+    icon: <UserCircle size={24} weight="light" className="text-base-content" />,
   },
   {
     id: 2,
     name: "Settings",
-    link: "/account/settings",
-    icon: <Wrench size={32} className="text-base-content" />,
+    link: "/account/#settings",
+    icon: <Wrench size={24} weight="light" className="text-base-content" />,
   },
 ];

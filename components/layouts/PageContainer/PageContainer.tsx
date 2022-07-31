@@ -19,7 +19,7 @@ export const PageContainer = ({
 
       <div
         data-theme={appTheme}
-        className={`w-screen min-h-screen flex flex-col ${
+        className={`w-screen min-h-screen flex flex-col font-text ${
           center && "justify-center items-center"
         }`}
       >

@@ -19,7 +19,8 @@
       "@core/*": ["core/*"],
       "@components/*": ["components/*"],
       "@/icons": ["public/icons"],
-      "@/images": ["public/images"]
+      "@/images": ["public/images"],
+      "@/lottie/*": ["public/lottie/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

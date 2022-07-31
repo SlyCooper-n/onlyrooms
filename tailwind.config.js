@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ["Roboto"],
-        secondary: ["Poppins"],
+        text: ["Roboto"],
+        title: ["Poppins"],
       },
       container: {
         center: true,
@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     // require("@tailwindcss/forms"),
-    // require("tailwind-scrollbar"),
+    require("tailwind-scrollbar"),
     require("@tailwindcss/typography"),
     require("daisyui"),
   ],
