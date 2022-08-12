@@ -26,7 +26,7 @@
 
 <br />
 
-<img alt="OnlyRooms homepage banner" src="./_docs/banner.jpeg" />
+<img alt="OnlyRooms homepage banner" src="./_docs/banner.png" />
 
 ## :pushpin: About
 
@@ -83,7 +83,7 @@ Testing
 ## :sparkles: Features
 
 - [x] Real-time rooms
-- [ ] Chat rooms
+- [x] Chat rooms
 - [ ] PWA support
 - [x] Dark and Light theme
 
