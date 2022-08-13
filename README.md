@@ -83,7 +83,7 @@ Testing
 ## :sparkles: Features
 
 - [x] Real-time rooms
-- [x] Chat rooms
+- [ ] Chat rooms
 - [ ] PWA support
 - [x] Dark and Light theme
 
