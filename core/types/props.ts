@@ -1,4 +1,3 @@
-import { AuthContext } from "@core/contexts";
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import { SelectOptions, UserType } from "./types";
 
@@ -58,7 +57,3 @@ export interface SelectProps {
 
 // * in-page components props
 export interface IllustrationProps extends HTMLAttributes<HTMLDivElement> {}
-
-export interface SignInListProps {
-  providers: { signInWithGoogle: AuthContext["signInWithGoogle"] };
-}
