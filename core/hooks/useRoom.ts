@@ -1,6 +1,7 @@
 import { db } from "@core/services";
 import { FirebaseSnapshotRoom, QuestionType } from "@core/types";
 import { off, onValue, ref } from "firebase/database";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAuth } from "./useAuth";
 
@@ -10,6 +11,7 @@ export const useRoom = (roomID: string) => {
   const [createdBy, setCreatedBy] = useState("");
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const roomRef = ref(db, `rooms/live-rooms/${roomID}`);
@@ -18,6 +20,10 @@ export const useRoom = (roomID: string) => {
       onValue(roomRef, (snapshot) => {
         const roomData = snapshot.val() as FirebaseSnapshotRoom;
         const questions = roomData.questions || [];
+
+        if (roomData.isClosed) {
+          router.push("/rooms");
+        }
 
         const parsedQuestions: QuestionType[] = Object.entries(questions).map(
           ([key, value]) => {
@@ -57,7 +63,7 @@ export const useRoom = (roomID: string) => {
     return () => {
       off(roomRef, "value");
     };
-  }, [roomID, user]);
+  }, [roomID, router, user]);
 
   return { roomTitle, createdBy, questions, isLoading };
 };

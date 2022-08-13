@@ -28,6 +28,8 @@ export interface PageLayoutProps {
 // * module components props
 export interface RoomHeaderProps {
   roomID: string;
+  isAdmin?: boolean;
+  closeRoom?: () => void;
 }
 
 export interface RoomInfoProps {
@@ -54,6 +56,16 @@ export interface SelectProps {
   selectedValue: string;
   changeValue: (value: any) => void;
   options: SelectOptions[];
+}
+
+export interface TabsProps {
+  triggers: string[];
+  children: ReactNode | ReactNode[];
+}
+
+export interface TabsContentProps {
+  value: string;
+  children: ReactNode | ReactNode[];
 }
 
 // * in-page components props
