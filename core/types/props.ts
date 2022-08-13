@@ -28,6 +28,8 @@ export interface PageLayoutProps {
 // * module components props
 export interface RoomHeaderProps {
   roomID: string;
+  isAdmin?: boolean;
+  closeRoom?: () => void;
 }
 
 export interface RoomInfoProps {
