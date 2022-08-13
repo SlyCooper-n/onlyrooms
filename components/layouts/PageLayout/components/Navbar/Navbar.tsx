@@ -7,7 +7,7 @@ import { CircleNotch, List, X } from "phosphor-react";
 import { useState } from "react";
 
 export const Navbar = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, signOutFromApp } = useAuth();
   const { appTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true);
   const router = useRouter();
@@ -52,16 +52,24 @@ export const Navbar = () => {
         ))}
 
         {user ? (
-          userOptions.map((userOpt) => (
-            <li
-              key={userOpt.id}
-              className="sm:hidden text-lg font-semibold hover:brightness-110"
-            >
-              <Link href={userOpt.link}>
-                <a>{userOpt.name}</a>
-              </Link>
+          <>
+            {userOptions.map((userOpt) => (
+              <li
+                key={userOpt.id}
+                className="sm:hidden text-lg font-semibold hover:brightness-110"
+              >
+                <Link href={userOpt.link}>
+                  <a>{userOpt.name}</a>
+                </Link>
+              </li>
+            ))}
+
+            <li className="sm:hidden text-lg font-semibold hover:brightness-110">
+              <button type="button" onClick={signOutFromApp}>
+                Sign out
+              </button>
             </li>
-          ))
+          </>
         ) : (
           <>
             <div className="sm:hidden divider w-32 self-center" />
