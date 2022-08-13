@@ -122,7 +122,7 @@ Clone the repo as shown above :arrow_up: and follow [this little guide](https://
 
 ## :desktop_computer: Deploy
 
-On Vercel: not deployed yet
+On Vercel: https://onlyrooms.vercel.app
 
 ## :memo: License
 
