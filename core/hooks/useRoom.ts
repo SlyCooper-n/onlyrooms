@@ -3,7 +3,6 @@ import { FirebaseSnapshotRoom, QuestionType } from "@core/types";
 import { off, onValue, ref } from "firebase/database";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useAuth } from "./useAuth";
 
 export const useRoom = (roomID: string) => {
@@ -23,8 +22,7 @@ export const useRoom = (roomID: string) => {
         const questions = roomData.questions || [];
 
         if (roomData.isClosed) {
-          toast.error("This room is already closed");
-          router.push("/");
+          router.push("/rooms");
         }
 
         const parsedQuestions: QuestionType[] = Object.entries(questions).map(

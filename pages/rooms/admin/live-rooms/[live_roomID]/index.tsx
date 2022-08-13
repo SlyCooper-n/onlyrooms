@@ -18,14 +18,10 @@ const AdminLiveQuestions: NextPage = () => {
   );
 
   // useEffect(() => {
-  //   while (loading) {
-  //     return;
-  //   }
-
   //   console.log(user?.id, createdBy);
 
-  //   if (user?.id !== createdBy) router.push("/");
-  // }, []);
+  // if (user?.id !== createdBy) router.push("/");
+  // }, [user, createdBy]);
 
   async function handleCloseRoom() {
     try {
@@ -33,7 +29,7 @@ const AdminLiveQuestions: NextPage = () => {
         isClosed: true,
       });
 
-      router.push("/");
+      router.push("/rooms");
     } catch (error) {
       const err = error as FirebaseError;
       toast.error(err.message);
