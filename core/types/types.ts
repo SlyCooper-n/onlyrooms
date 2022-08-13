@@ -2,6 +2,7 @@
 export type FirebaseSnapshotRoom = {
   createdBy: string;
   title: string;
+  isClosed?: boolean;
   questions?: Record<
     string,
     {
