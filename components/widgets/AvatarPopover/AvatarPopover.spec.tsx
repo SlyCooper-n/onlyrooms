@@ -1,7 +1,15 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { AvatarPopover } from "./AvatarPopover";
+
+vi.mock("@core/hooks", () => {
+  return {
+    useAuth: () => ({
+      signOutFromApp: () => Promise.resolve(),
+    }),
+  };
+});
 
 describe("Avatar Popover", () => {
   it("should toggle the popover", async () => {
