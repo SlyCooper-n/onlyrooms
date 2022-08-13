@@ -22,7 +22,10 @@ export const RoomCode = ({ roomCode }: RoomCodeProps) => {
       <div className="p-2 bg-primary">
         <Copy size={24} color="white" />
       </div>
-      <span className="text-base-content">#{roomCode}</span>
+
+      <span className="text-base-content text-xs sm:text-base">
+        #{roomCode}
+      </span>
     </button>
   );
 };
