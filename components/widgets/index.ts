@@ -5,5 +5,6 @@ export * from "./Lottie";
 export * from "./Question";
 export * from "./RoomCode";
 export * from "./Select";
+export * from "./Tabs";
 export * from "./Tooltip";
 export * from "./UserInfo";

@@ -58,6 +58,16 @@ export interface SelectProps {
   options: SelectOptions[];
 }
 
+export interface TabsProps {
+  triggers: string[];
+  children: ReactNode | ReactNode[];
+}
+
+export interface TabsContentProps {
+  value: string;
+  children: ReactNode | ReactNode[];
+}
+
 // * in-page components props
 export interface IllustrationProps extends HTMLAttributes<HTMLDivElement> {}
 

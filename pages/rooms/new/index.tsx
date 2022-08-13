@@ -100,6 +100,55 @@ const NewRoom: NextPage = () => {
             </button>
           </form>
         </main>
+
+        {/* <Tabs triggers={["create", "enter"]}>
+          <TabsContent value="create">
+            <main className="flex-1 container flex flex-col justify-center items-center">
+              <h2 className="mb-12 text-3xl text-center font-title font-semibold">
+                Create a new room
+              </h2>
+
+              <form
+                className="form-control w-full md:w-1/2 gap-4"
+                onSubmit={handleCreateNewRoom}
+              >
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder="Give a title to your room"
+                  aria-label="Give a title to your room"
+                  autoFocus
+                  value={roomTitle}
+                  onChange={(e) => setRoomTitle(e.target.value)}
+                  className="input bg-white outline-none focus:ring-2 focus:ring-secondary-focus focus:ring-offset-2 focus:ring-offset-base-100"
+                />
+
+                <label
+                  ref={selectLabelRef}
+                  className="mb-12 w-full flex justify-between items-center"
+                >
+                  <span className="mr-auto">Room type:</span>
+                  <Select
+                    selectedValue={roomType}
+                    changeValue={(value: RoomType) => setRoomType(value)}
+                    options={[
+                      { value: "default", text: "Default" },
+                      { value: "annonymous", text: "Annonymous" },
+                    ]}
+                  />
+                </label>
+
+                <button type="submit" className="btn btn-primary">
+                  Create
+                </button>
+              </form>
+            </main>
+          </TabsContent>
+
+          <TabsContent value="enter">
+            <div>Enter</div>
+          </TabsContent>
+        </Tabs> */}
       </PageLayout>
     </PageContainer>
   );
