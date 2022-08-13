@@ -1,10 +1,14 @@
+import { useAuth } from "@core/hooks";
 import { AvatarPopoverProps } from "@core/types";
 import { userOptions } from "@core/utils";
 import { Popover, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { Power } from "phosphor-react";
 
 export const AvatarPopover = ({ user, className }: AvatarPopoverProps) => {
+  const { signOutFromApp } = useAuth();
+
   return (
     <Popover className={`relative ${className}`}>
       <Popover.Button className="avatar outline-none focus:ring-2 focus:ring-accent-focus focus:ring-offset-2 focus:ring-offset-base-100">
@@ -40,6 +44,17 @@ export const AvatarPopover = ({ user, className }: AvatarPopoverProps) => {
               </Link>
             </li>
           ))}
+
+          <div className="divider my-0" />
+
+          <li>
+            <button
+              onClick={signOutFromApp}
+              className="flex justify-between gap-4"
+            >
+              Sign out <Power size={24} />
+            </button>
+          </li>
         </Popover.Panel>
       </Transition>
     </Popover>

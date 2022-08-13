@@ -67,7 +67,7 @@ const LiveRoom: NextPage = () => {
               {!loading && !user && (
                 <span>
                   To send an ask,{" "}
-                  <Link href="/">
+                  <Link href={`/login?redirect=/live-rooms/${live_roomID}`}>
                     <a className="text-secondary">login</a>
                   </Link>
                 </span>

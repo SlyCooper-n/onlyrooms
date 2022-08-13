@@ -1,7 +1,7 @@
 import { PageContainer } from "@components/layouts";
 import { Button, Logo } from "@components/widgets";
 import { useAuth } from "@core/hooks";
-import { IllustrationProps, SignInListProps } from "@core/types";
+import { IllustrationProps } from "@core/types";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import { AppleLogo, CircleNotch, GithubLogo, GoogleLogo } from "phosphor-react";
 // TODO: Add sign in with Apple and Github
 
 const Login: NextPage = () => {
-  const { user, loading, signInWithGoogle } = useAuth();
+  const { user, loading } = useAuth();
 
   return (
     <PageContainer headTitle="OnlyRooms | Login">
@@ -27,11 +27,7 @@ const Login: NextPage = () => {
               <CircleNotch size={32} className="mx-auto animate-spin" />
             )}
 
-            {!user ? (
-              <SignInList providers={{ signInWithGoogle }} />
-            ) : (
-              <LoginComplete />
-            )}
+            {!user ? <SignInList /> : <LoginComplete />}
           </div>
         </main>
       </section>
@@ -62,13 +58,13 @@ const Illustration = ({ className }: IllustrationProps) => {
   );
 };
 
-const SignInList = ({ providers }: SignInListProps) => {
-  const { signInWithGoogle } = providers;
+const SignInList = () => {
+  const { signIn } = useAuth();
 
   return (
     <div className="flex flex-col gap-4">
       <Button
-        onClick={signInWithGoogle}
+        onClick={() => signIn("google")}
         ring
         className="bg-[#ea4435] text-white border-none hover:bg-[#ea4435] hover:brightness-90 focus:ring-[#ea4435]"
       >
@@ -76,12 +72,12 @@ const SignInList = ({ providers }: SignInListProps) => {
         Login with Google
       </Button>
 
-      <div className="divider">Coming soon...</div>
-
-      <Button disabled>
+      <Button onClick={() => signIn("github")}>
         <GithubLogo size={32} />
         Login with Github
       </Button>
+
+      <div className="divider">Coming soon...</div>
 
       <Button disabled>
         <AppleLogo size={32} />
