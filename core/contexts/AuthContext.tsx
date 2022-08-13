@@ -2,7 +2,8 @@ import { auth, FirebaseSignInService } from "@core/services";
 import { AuthProviderProps, UserType } from "@core/types";
 import { SignInUseCase } from "@core/use-cases";
 import {
-  Auth,
+  AuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
@@ -14,15 +15,17 @@ import toast from "react-hot-toast";
 export interface AuthContext {
   user: UserType | undefined;
   loading: boolean;
-  signInWithGoogle: () => Promise<void>;
-  signOut: (auth: Auth) => Promise<void>;
+  signIn: (provider: Provider) => Promise<void>;
+  signOutFromApp: () => Promise<void>;
 }
+
+export type Provider = "google" | "github";
 
 // TODO: Add sign in with Apple and Github (refactor the use case)
 
-export const AuthContext = createContext<AuthContext>({} as AuthContext);
+export const AuthContext = createContext({} as AuthContext);
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
+export const UserAuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserType | undefined>();
   const [loading, setLoading] = useState(true);
   const route = useRouter();
@@ -50,10 +53,22 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
   }, []);
 
-  async function signInWithGoogle() {
+  async function signIn(provider: Provider) {
+    let authProvider: AuthProvider;
+
+    switch (provider) {
+      case "google":
+        authProvider = new GoogleAuthProvider();
+        break;
+
+      case "github":
+        authProvider = new GithubAuthProvider();
+        break;
+    }
+
     const signInUseCase = new SignInUseCase(
       new FirebaseSignInService(),
-      new GoogleAuthProvider()
+      authProvider
     );
     const user = await signInUseCase.run();
 
@@ -63,13 +78,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
 
     setUser(user);
-    toast.success(`Sign in complete. Welcome, ${user.name}!`);
+    toast.success(`Welcome, ${user.name}!`);
 
     route.push("/");
   }
 
+  async function signOutFromApp() {
+    return await signOut(auth);
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithGoogle, signOut }}>
+    <AuthContext.Provider value={{ user, loading, signIn, signOutFromApp }}>
       {children}
     </AuthContext.Provider>
   );
