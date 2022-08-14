@@ -84,7 +84,7 @@ Testing
 
 - [x] Real-time rooms
 - [ ] Chat rooms
-- [ ] PWA support
+- [x] PWA support
 - [x] Dark and Light theme
 
 ### :eye: Curious to see what's coming next?
