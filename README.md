@@ -1,9 +1,8 @@
 <div align="center">
 
-<!-- # OnlyRooms IMG
+<img src="public/icons/messenger.png" alt="OnlyRooms logo" width="50" />
 
 <br />
-<br /> -->
 
 # OnlyRooms | Rooms for everybody
 
@@ -55,9 +54,9 @@ This project was developed in order to practise web development using Next.js an
 Base tools
 </summary>
 
-- [Next.js](https://nextjs.org/)
-- [Firebase](https://firebase.google.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/) v12.2.2
+- [Firebase](https://firebase.google.com/) v9.9.0
+- [TypeScript](https://www.typescriptlang.org/) v4.7.4
 
 </details>
 
@@ -66,9 +65,9 @@ Base tools
 Styling
 </summary>
 
-- [Tailwind](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
-- [RadixUI](https://www.radix-ui.com/)
+- [Tailwind](https://tailwindcss.com/) v3.1.6
+- [DaisyUI](https://daisyui.com/) v2.19.1
+- [RadixUI](https://www.radix-ui.com/) (version per component)
 
 </details>
 
@@ -77,9 +76,9 @@ Styling
 Linters and Formatters
 </summary>
 
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [.editorConfig](https://editorconfig.org/)
+- [ESLint](https://eslint.org/) v8.20.0
+- [Prettier](https://prettier.io/) (VS Code extension)
+- [.editorConfig](https://editorconfig.org/) (VS Code extension)
 
 </details>
 
@@ -88,9 +87,12 @@ Linters and Formatters
 Testing
 </summary>
 
-- [Vitest](https://vitest.dev/)
+- [Vitest](https://vitest.dev/) v0.18.1
 - [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
-- [Cypress](https://www.cypress.io/)
+  - jest-dom v5.16.4
+  - react v13.3.0
+  - user-event v14.3.0
+- [Cypress](https://www.cypress.io/) v10.3.1
 
 </details>
 
