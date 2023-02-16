@@ -24,24 +24,13 @@
 - [General Info](#pushpin-general-information)
 - [Technologies Used](#hammer-technologies-i-used)
 - [Features](#sparkles-features)
-  - [What's next?](#eye-curious-to-see-whats-coming-next)
 - [Screenshots](#camera-screenshots)
 - [Setup](#rocket-running-this-project)
-  - [Contributing](#brain-thinking-of-contributing-to-the-project)
-<!-- - [Usage](#question-usage) -->
 - [Project Status](#heavy_check_mark-project-status)
 - [Acknowledgement](#white_heart-acknowledgement)
 - [License & Contact](#memo-license--contact)
 
 ## :pushpin: General Information
-
-<!-- 
-Provide general information about your project here.
-
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
--->
 
 This project was developed in order to practise web development using Next.js and Firebase to provide real-time rooms. I'll be improving this project from now on to keep evolving my knowledge and maybe create something cool for people to use. I've built some small features on top of that one, like PWA and dark mode support. But that's not all, I'm aiming to add [this feedback feature](https://github.com/SlyCooper-n/feedback-widget-nlw-08) inside this web app in the near future as well as CI with Github Actions.
 
@@ -99,13 +88,8 @@ Testing
 ## :sparkles: Features
 
 - [x] Real-time rooms
-- [ ] Chat rooms
 - [x] PWA support
 - [x] Dark and Light theme
-
-### :eye: Curious to see what's coming next?
-
-[Stay tuned right here](https://github.com/users/SlyCooper-n/projects/3)
 
 ## :camera: Screenshots
 
@@ -135,23 +119,10 @@ npm install
 # run on development mode
 npm run dev
 ```
-### :brain: Thinking of contributing to the project?
-
-Clone the repo as shown above :arrow_up: and follow [this little guide](https://github.com/SlyCooper-n/onlyrooms/blob/main/_docs/CONTRIBUTING.md)
-
-<!--
-## :question: Usage
-
-How does one go about using it? Provide various use cases and code examples here.
-
-`write-your-code-here`
--->
 
 ## :heavy_check_mark: Project Status
 
-<!-- Project is: in progress / complete / no longer being worked on. If you are no longer working on it, provide reasons why. -->
-
-It's currently _in progress_, but a MVP is available to be used.
+It's not being worked on anymore, but a demo is available.
 
 | Status | Project |
 | ------ | ------- |
